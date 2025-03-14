@@ -22,7 +22,7 @@ class PatchEmbedding(nn.Module):
         
         self.register_buffer(
             'positional_embedding', 
-            torch.zeros(1, self.num_patches + 1, embed_dim)
+            torch.zeros(1, self.num_patches, embed_dim)
         )
         self.positional_embedding_initialized = False
     
@@ -36,7 +36,7 @@ class PatchEmbedding(nn.Module):
         seq_len = x.size(1)
         
         if not self.positional_embedding_initialized or self.positional_embedding.size(1) != seq_len + 1:
-            new_pos_embed = torch.randn(1, seq_len + 1, self.embed_dim, device=x.device)
+            new_pos_embed = torch.randn(1, seq_len, self.embed_dim, device=x.device)
             
             nn.init.trunc_normal_(new_pos_embed, std=0.02)
             
