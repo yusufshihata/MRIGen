@@ -1,5 +1,5 @@
 import torch.nn as nn
-from diffusers import UNet2DModel
+from diffusers.models.unets.unet_2d import UNet2DModel
 
 class Generator(nn.Module):
     def __init__(self):
