@@ -5,7 +5,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from models.vit import PatchEmbedding, MultiHeadAttention, FeedForward, ViT
+from models.modules.vit import PatchEmbedding, MultiHeadAttention, FeedForward, ViT
 
 class ViTTest(unittest.TestCase):
     def setUp(self):
