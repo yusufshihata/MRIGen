@@ -20,6 +20,11 @@ class ViTTest(unittest.TestCase):
         self.mlp = FeedForward(self.latent_size)
         self.vit = ViT(self.img_shape, self.patch_res, self.latent_size, 8, 2)
 
+    def tearDown(self): 
+        del self.patch_embedding
+        del self.attention_head
+        del self.mlp
+        del self.vit
 
     def test_patch_embedding(self):
         output = self.patch_embedding(self.img)
