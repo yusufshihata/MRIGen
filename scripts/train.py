@@ -6,7 +6,7 @@ import torch
 import torch.optim as optim
 from tqdm import tqdm
 
-def train_dvitgan(model, dataloader, num_epochs=100, device="cuda", save_every=10):
+def train(model, dataloader, num_epochs=100, device="cuda", save_every=10):
     model.to(device)
     
     for epoch in range(1, num_epochs + 1):

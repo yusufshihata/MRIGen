@@ -21,8 +21,9 @@ class DViTGAN:
         self.Goptim.zero_grad()
 
         noise = self._generate_noise(data)
+        t = torch.randint(0, 1000, (data.size(0),), device=self.device).long()
 
-        fake_imgs = self.gen(noise)
+        fake_imgs = self.gen(noise, t)
         fake_logits = self.disc(fake_imgs)
 
         loss = - fake_logits.mean().view(-1)
@@ -37,8 +38,9 @@ class DViTGAN:
         self.Doptim.zero_grad()
 
         noise = self._generate_noise(data)
+        t = torch.randint(0, 1000, (data.size(0),), device=self.device).long()
 
-        fake_imgs = self.gen(noise)
+        fake_imgs = self.gen(noise, t)
         
         fake_logits = self.disc(fake_imgs)
         real_logits = self.disc(data)
